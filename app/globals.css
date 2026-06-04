@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-display);
+}
+
+body {
+  @apply bg-oves-navy text-oves-cream;
+}
+
+a {
+  transition: color 150ms ease;
+}
+
+.oves-container {
+  @apply mx-auto max-w-5xl px-4 sm:px-6;
+}
+
+.oves-section {
+  @apply py-10 sm:py-12 lg:py-14;
+}
+
+.oves-card {
+  @apply rounded-md border border-oves-teal/15 bg-oves-cream shadow-[0_2px_12px_rgba(14,44,78,0.06)];
+}
+
+.oves-badge {
+  @apply inline-block rounded-sm border border-oves-teal/20 bg-oves-sand px-3 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.16em] text-oves-teal;
+}
+
+.oves-divider {
+  @apply h-px w-16 bg-gradient-to-r from-oves-sun/80 via-oves-teal/40 to-transparent;
+}

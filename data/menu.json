@@ -1,0 +1,370 @@
+{
+  "$schema_note": "Oves Restaurant menu data. Single source of truth — used by /menus page and by the chatbot system prompt. Update prices here only.",
+  "lastUpdated": "2026-05-28",
+  "established": 1968,
+  "tags": {
+    "GF": {
+      "label": "Gluten Friendly",
+      "description": "Can be made gluten friendly. NOT safe for celiac disease — cross-contamination risk."
+    },
+    "VF": {
+      "label": "Vegan Friendly",
+      "description": "Vegan friendly. Cross-contamination risk."
+    }
+  },
+  "sections": [
+    {
+      "id": "breakfast",
+      "title": "Breakfast",
+      "subtitle": "Served starting at 7am",
+      "groups": [
+        {
+          "name": "Classic Breakfast",
+          "items": [
+            { "name": "1 Egg, Home Fries & Toast", "price": "8.00", "tags": ["GF"] },
+            { "name": "2 Eggs, Home Fries & Toast", "price": "10.00", "tags": ["GF"] },
+            { "name": "Pancakes (3)", "price": "10.00", "notes": "(2) 8.00" },
+            { "name": "Blueberry Pancakes (3)", "price": "13.00", "notes": "(2) 11.00" },
+            { "name": "Chocolate Chip Pancakes (3)", "price": "13.00", "notes": "(2) 11.00" },
+            { "name": "2 Eggs (any style), Home Fries, Toast & choice of Breakfast Meat", "price": "13.00", "tags": ["GF"] },
+            { "name": "Texas French Toast (3)", "price": "11.00", "tags": ["GF"], "notes": "(2) 9.00" },
+            { "name": "Belgian Waffle", "price": "10.75", "notes": "Toppings 4.25 extra — strawberry, blueberry, or banana" },
+            { "name": "2 Eggs, 2 Pancakes & Home Fries", "price": "15.25" },
+            { "name": "Creamed Chip Beef", "price": "13.50", "notes": "Over toast & home fries" },
+            { "name": "Avocado on Sourdough Toast", "price": "14.50", "tags": ["GF"], "notes": "Add an egg 17.50 / ask about our toppings" },
+            { "name": "Breakfast Burrito", "price": "14.50", "notes": "Scrambled eggs, onions, peppers, with your choice of meat & cheese, served on a 12-inch tortilla with home fries & salsa" },
+            { "name": "Oatmeal", "price": "6.00", "tags": ["VF"], "notes": "With fruit 10.25" }
+          ]
+        },
+        {
+          "name": "Build Your Own Omelettes",
+          "tags": ["GF"],
+          "description": "3-egg omelettes with home fries & toast. Can be made gluten-friendly: GF toast 3.00. Substitute English muffin or bagel 1.75. Egg whites available.",
+          "items": [
+            { "name": "Plain Omelette", "price": "10.00" }
+          ],
+          "modifiers": [
+            { "category": "Add Meat", "price": "2.00", "options": "bacon, sausage, ham, pork roll" },
+            { "category": "Add Turkey Sausage", "price": "3.00" },
+            { "category": "Add Cheese", "price": "1.50", "options": "american, cheddar, feta, provolone, swiss" },
+            { "category": "Add Vegetables", "price": "1.50", "options": "peppers, tomatoes, mushrooms, spinach, onions" }
+          ]
+        },
+        {
+          "name": "Oves Specialty Omelettes",
+          "items": [
+            { "name": "Island", "price": "17.00", "notes": "Crab meat, cheese, mango salsa, sriracha mayo & Old Bay" },
+            { "name": "Heart Healthy", "price": "14.50", "notes": "Egg whites, turkey sausage, spinach, swiss cheese & mushrooms" },
+            { "name": "Spanish", "price": "14.00", "notes": "Ham, peppers, onions, tomatoes & cheese" },
+            { "name": "Western", "price": "13.75", "notes": "Ham, peppers, onions & cheese" },
+            { "name": "Veggie", "price": "12.50", "notes": "Spinach, mushroom, onion, tomato, peppers" },
+            { "name": "Greek", "price": "13.75", "notes": "Feta cheese, red onion & spinach" }
+          ]
+        },
+        {
+          "name": "Breakfast Sandwiches",
+          "tags": ["GF"],
+          "items": [
+            { "name": "Egg & Cheese", "price": "6.75", "notes": "Bagel, sandwich-size English muffin, or choice of toast" },
+            { "name": "Egg & Cheese w/ Bacon, Ham, Pork Roll or Sausage", "price": "9.00" },
+            { "name": "Add Avocado", "price": "3.00" }
+          ],
+          "footnote": "Can be made gluten-friendly"
+        },
+        {
+          "name": "Cereal & Milk",
+          "tags": ["GF"],
+          "items": [
+            { "name": "Assorted brands", "price": "4.99" }
+          ]
+        },
+        {
+          "name": "Kids Breakfast (12 & under)",
+          "tags": ["GF"],
+          "price": "8.50",
+          "items": [
+            { "name": "A. 1 egg, home fries, toast, 2 slices of bacon or a sausage", "price": "8.50" },
+            { "name": "B. Pancakes (2), 2 slices of bacon or a sausage", "price": "8.50" },
+            { "name": "C. French toast (2), slices of bacon or a sausage", "price": "8.50" }
+          ]
+        },
+        {
+          "name": "Sides",
+          "items": [
+            { "name": "Egg", "price": "3.00" },
+            { "name": "Egg Whites", "price": "3.50" },
+            { "name": "Bacon, Sausage, Ham or Pork Roll", "price": "4.25" },
+            { "name": "Scrapple or Scrapple Bites", "price": "4.50" },
+            { "name": "Turkey Sausage", "price": "5.25" },
+            { "name": "Bagel (Plain or Everything)", "price": "3.75" },
+            { "name": "Bagel w/ Cream Cheese", "price": "5.00" },
+            { "name": "Fresh Mixed Fruit", "price": "7.25" },
+            { "name": "Home Fries", "price": "4.25" },
+            { "name": "Banana", "price": "2.00" },
+            { "name": "English Muffin", "price": "3.75" },
+            { "name": "Toast", "price": "2.50" },
+            { "name": "Gluten Free Toast or Bun", "price": "3.00" },
+            { "name": "Avocado", "price": "3.75" }
+          ]
+        },
+        {
+          "name": "Beverages",
+          "items": [
+            { "name": "Soft Drinks (Small)", "price": "4.00", "notes": "Pepsi, Diet Pepsi, Cherry Pepsi, Starry Lemon-Lime, Pennsylvania Dutch Birch Beer, Tropicana Lemonade, Mountain Dew, Ginger Ale, Unsweetened Iced Tea" },
+            { "name": "Soft Drinks (Large)", "price": "4.50" },
+            { "name": "Ellis Cold Brew Iced Coffee (16 oz)", "price": "5.50", "notes": "Flavors: vanilla, hazelnut & caramel" },
+            { "name": "Juice", "price": "4.25", "notes": "Orange, tomato, grapefruit, cranberry or apple" },
+            { "name": "Coffee", "price": "3.75", "notes": "Free refills on coffee & hot tea" },
+            { "name": "Hot Tea", "price": "3.75" },
+            { "name": "Bottled Water", "price": "2.75" },
+            { "name": "Milk or Almond Milk", "price": "4.25" },
+            { "name": "Chocolate Milk", "price": "5.00" },
+            { "name": "Hot Chocolate", "price": "3.75" },
+            { "name": "Smoothies (16 oz)", "price": "9.00", "notes": "Strawberry, banana, mango, pina colada — choose your flavor" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lunch",
+      "title": "Lunch",
+      "subtitle": "Order just a sandwich, or make it a platter for $5.25 more. Platter includes a pickle, coleslaw, and your choice of potato chips or french fries.",
+      "groups": [
+        {
+          "name": "From The Grill",
+          "description": "Add cheese $1.50 (American, Provolone, Cheddar or Swiss). Add $0.75 for mushrooms, hot or sweet peppers. Added upon request: lettuce, tomato & onion.",
+          "items": [
+            { "name": "Hot Dog", "price": "4.25", "notes": "Fresh-grilled Dietz & Watson hot dog served on a soft bun" },
+            { "name": "Pork Roll Sandwich", "price": "7.00", "tags": ["GF"], "notes": "Case's original pork roll, a NJ tradition since 1870. Served hot & fresh on a soft bun." },
+            { "name": "Steak Sandwich", "price": "12.00", "notes": "8 oz of shaved Prime Rib steak, hot & fresh-grilled to order. Served on a fresh bakery Roll." },
+            { "name": "Chicken Steak Sandwich", "price": "12.00", "notes": "8 oz of fresh-grilled, chopped chicken breast. Served on a fresh bakery roll." },
+            { "name": "Hamburger", "price": "9.75", "tags": ["GF"], "notes": "7 oz Black Angus all-beef hamburger served on a soft bun" },
+            { "name": "Double Burger", "price": "16.50", "tags": ["GF"], "notes": "Two Black Angus hamburger patties, 14 oz of beef, served on a soft bun" },
+            { "name": "Grilled Chicken Sandwich", "price": "11.00", "tags": ["GF"], "notes": "Fresh-grilled boneless chicken breast served on a kaiser roll" },
+            { "name": "Chicken Special Sandwich", "price": "14.00", "notes": "Fresh-grilled chicken breast with roasted red peppers and fresh mozzarella on a fresh bakery roll" },
+            { "name": "Grilled Cheese (Plain)", "price": "6.50", "notes": "Sliced cheese (American, Provolone, Cheddar or Swiss) on grilled white, wheat or rye bread. Plain or with a tomato slice." },
+            { "name": "Grilled Cheese w/ Bacon", "price": "8.50", "tags": ["GF"] },
+            { "name": "Crab Grilled Cheese", "price": "Market Price", "tags": ["GF"], "notes": "Two slices of Texas toast stuffed with melted cheddar cheese, fresh crab meat & a touch of Old Bay seasoning" }
+          ]
+        },
+        {
+          "name": "Cold Sandwiches",
+          "items": [
+            { "name": "Turkey Sub", "price": "12.75", "notes": "Fresh turkey breast, American cheese, lettuce, tomato, onion and mayo. Served on a sub roll or a 12-inch flour tortilla wrap." },
+            { "name": "Italian Sub", "price": "12.75", "notes": "Capicola, genoa, cooked salami, provolone cheese, lettuce, tomato and onion. Topped with oregano, oil & vinegar. Served on a sub roll or a 12-inch flour wrap." },
+            { "name": "BLT", "price": "8.50", "tags": ["GF"], "notes": "Bacon, lettuce & Jersey-fresh tomato served with mayo on white, wheat or rye bread" }
+          ]
+        },
+        {
+          "name": "Hot Plates",
+          "items": [
+            { "name": "Chicken Tenders", "price": "9.99", "notes": "Four golden-fried, breaded chicken tenders" },
+            { "name": "Krispy Chicken Sandwich", "price": "10.75", "notes": "Breaded, golden-fried chicken breast patty served on a kaiser roll" },
+            { "name": "Fried Flounder Sandwich", "price": "15.99", "notes": "Fresh-caught flounder golden-fried with our homemade breading served on a fresh bakery roll" },
+            { "name": "\"Island's Best\" Chesapeake Bay Crab Cake Sandwich", "price": "16.99", "notes": "An Oves favorite! Made from jumbo lump crabmeat with just a touch of seasoning, served on a soft bun" }
+          ],
+          "footnote": "Our chicken breasts are all-natural. No antibiotics or growth hormones ever."
+        }
+      ]
+    },
+    {
+      "id": "dinner",
+      "title": "Dinner",
+      "subtitle": "Serving starts at 5pm · Ask your server about our daily specials!",
+      "description": "Entrées served with two side dishes. Pasta entrées served with one side dish. Sides: house salad, baked potato, cole slaw, applesauce, french fries, fresh jersey corn on the cob (when available) or fresh vegetable of the day. Extra side french fries 5.25 / extra side applesauce, coleslaw or vegetable 2.",
+      "groups": [
+        {
+          "name": "Appetizers",
+          "items": [
+            { "name": "Chicken Tenders (4)", "price": "9.99" },
+            { "name": "Mozzarella Sticks (6)", "price": "9.75" },
+            { "name": "Potato Skins (5)", "price": "9.25" },
+            { "name": "Shrimp Cocktail (5)", "price": "12.99", "tags": ["GF"] },
+            { "name": "Coconut Shrimp (4)", "price": "14.95" },
+            { "name": "Steamers", "price": "13.00", "tags": ["GF"] },
+            { "name": "Crab Bites (5)", "price": "12.75" },
+            { "name": "Fried Calamari", "price": "14.75" },
+            { "name": "Clam Strips", "price": "12.75" },
+            { "name": "Mussels Red or White", "price": "15.99", "tags": ["GF"], "notes": "Sautéed in garlic wine sauce" },
+            { "name": "Wings (8)", "price": "13.00" },
+            { "name": "Onion Rings", "price": "9.75" },
+            { "name": "Basket of French Fries", "price": "5.25" }
+          ]
+        },
+        {
+          "name": "Homemade Soups",
+          "items": [
+            { "name": "Manhattan Clam Chowder", "price": "7.99", "tags": ["GF"], "notes": "Tomato-based chowder, chopped green peppers, carrots, onions, celery, fresh clams and Oves' own mix of herbs & spices" },
+            { "name": "Soup Du Jour", "price": "7.99", "notes": "Ask your server about our delicious homemade selections" }
+          ]
+        },
+        {
+          "name": "Salads",
+          "items": [
+            { "name": "House Salad", "price": "7.75", "tags": ["GF"], "notes": "Spring mix lettuce, cherry tomatoes, red pepper, cucumber & red onion" },
+            { "name": "Caesar Salad", "price": "8.00", "tags": ["GF"], "notes": "Romaine lettuce, parmesan cheese, croutons & creamy caesar dressing" },
+            { "name": "Add chilled shrimp", "price": "8.75" },
+            { "name": "Add 4oz grilled chicken", "price": "5.75" }
+          ]
+        },
+        {
+          "name": "Favorites",
+          "items": [
+            { "name": "Shrimp Tacos", "price": "Market Price", "notes": "3 flour tortillas with cajun seared shrimp. Topped with fresh mango salsa & cilantro lime crema." },
+            { "name": "Poke Bowl", "price": "Market Price", "notes": "Cubed Ahi Tuna, tortilla chips, fresh mango salsa, cucumber, avocado and black sesame seeds on a bed of greens. Topped with soy sauce and sesame oil." }
+          ]
+        },
+        {
+          "name": "Sandwiches",
+          "description": "Gluten-free bun 3.00 extra. All sandwiches served with french fries.",
+          "items": [
+            { "name": "The Oves Burger", "price": "16.99", "tags": ["GF"], "notes": "7oz Black Angus beef burger with american cheese, topped with lettuce, onion & tomato" },
+            { "name": "Philly Cheesesteak", "price": "18.50", "notes": "8oz shaved ribeye, american cheese & fried onions" },
+            { "name": "Chicken Sandwich", "price": "18.50", "tags": ["GF"], "notes": "Grilled chicken breast topped with cheese, lettuce, tomato & onion" },
+            { "name": "Chicken Cheesesteak", "price": "18.50", "notes": "8oz grilled chicken breast, american cheese & fried onions" },
+            { "name": "Chesapeake Bay Crab Cake Sandwich", "price": "23.00", "notes": "Homemade broiled crab cake on a toasted bun topped with lettuce, tomato & onion. Served with homemade tartar sauce." },
+            { "name": "Fried Flounder Sandwich", "price": "21.00", "notes": "Golden fried filet topped with lettuce, tomato & onion. Served on an italian roll with homemade tartar sauce." }
+          ]
+        },
+        {
+          "name": "From The Land",
+          "description": "Our chicken breasts are all-natural / no antibiotics or growth hormones ever.",
+          "items": [
+            { "name": "1/2 Roasted Chicken", "price": "24.99", "notes": "Generous size of a fresh half a chicken, herb-seasoned and oven-roasted to perfection. Portion includes chicken breast, thigh, and leg, served over rice pilaf." },
+            { "name": "New York Strip Steak", "price": "32.99", "tags": ["GF"], "notes": "12 oz N.Y. strip charbroiled to your desired temperature" },
+            { "name": "Chicken Parmesan", "price": "24.99", "notes": "Fresh breaded chicken breast topped with tomato sauce and fresh mozzarella cheese served over linguine" },
+            { "name": "Linguine Rose", "price": "23.99", "notes": "With sun-dried tomatoes, baby spinach, vodka rose sauce over linguine. Add chicken 6.99 / shrimp 9.99" }
+          ]
+        },
+        {
+          "name": "From The Sea",
+          "description": "Our seafood is delivered fresh seven days a week.",
+          "items": [
+            { "name": "Flounder", "price": "25.99", "tags": ["GF"], "notes": "Fresh-caught flounder broiled in a seasoned white wine sauce or golden fried with our homemade breading" },
+            { "name": "Stuffed Flounder", "price": "31.99", "notes": "Flounder filled with Oves' homemade crabmeat stuffing" },
+            { "name": "Stuffed Shrimp", "price": "30.99", "notes": "Five jumbo shrimp stuffed with Oves' homemade crabmeat stuffing" },
+            { "name": "Fried Shrimp", "price": "24.99", "notes": "A generous serving of six golden fried jumbo shrimp" },
+            { "name": "Coconut Shrimp", "price": "28.99", "notes": "Six jumbo shrimp battered with coconut served with a side of raspberry melba sauce" },
+            { "name": "Crab Imperial", "price": "29.99", "tags": ["GF"], "notes": "Baked jumbo crabmeat with homemade imperial sauce" },
+            { "name": "Mussels over Linguine", "price": "23.99", "notes": "Mussels (red or white sauce) served over linguine" },
+            { "name": "Seafood Combination (Fried)", "price": "38.99", "notes": "Flounder, shrimp, scallops, oyster, deviled crab, deviled clam" },
+            { "name": "Seafood Combination (Broiled)", "price": "38.99", "notes": "Flounder, shrimp, scallops, lobster tail, crab cake" },
+            { "name": "Crabmeat Au Gratin", "price": "29.99", "notes": "Jumbo lump crabmeat topped with a blend of cheeses, then baked" },
+            { "name": "Scallops", "price": "Market Price", "tags": ["GF"], "notes": "Choice of fresh sea scallops broiled in a lightly seasoned wine sauce or golden fried" },
+            { "name": "Shrimp Scampi", "price": "25.99", "notes": "Six jumbo shrimp sautéed in a garlic white wine and lemon butter sauce over linguine" },
+            { "name": "Chesapeake Bay Crab Cake", "price": "32.99", "notes": "\"Island's Best\" — made from 1/3 lb jumbo lump crabmeat with just a touch of seasoning" },
+            { "name": "Golden Fried Oysters", "price": "25.99", "notes": "Five jumbo select oysters" },
+            { "name": "Fresh Catch of the Day", "price": "Market Price", "tags": ["GF"] }
+          ]
+        },
+        {
+          "name": "Beverages",
+          "items": [
+            { "name": "Soft Drinks", "price": "4.00", "notes": "Refills 1.50. Pepsi, Diet Pepsi, Cherry Pepsi, Starry Lemon-Lime, Birch Beer, Tropicana Lemonade, Mountain Dew, Ginger Ale, Unsweetened Iced Tea" },
+            { "name": "Smoothies (16 oz)", "price": "9.00", "notes": "Strawberry, banana, mango, pina colada" },
+            { "name": "Ellis Cold Brewed Iced Coffee (16 oz)", "price": "5.50", "notes": "Add vanilla, hazelnut or caramel 6.25" },
+            { "name": "Hot Coffee", "price": "3.75", "notes": "Free refills on coffee & hot tea" },
+            { "name": "Hot Tea", "price": "3.75" },
+            { "name": "Milk", "price": "4.25" },
+            { "name": "Almond Milk", "price": "4.25" },
+            { "name": "Chocolate Milk", "price": "5.00" },
+            { "name": "Juice (12 oz)", "price": "4.25", "notes": "Orange, tomato, grapefruit, apple & cranberry" },
+            { "name": "Bottled Water", "price": "2.75" },
+            { "name": "Hot Chocolate", "price": "3.75" }
+          ]
+        },
+        {
+          "name": "Water Ice",
+          "items": [
+            { "name": "Small", "price": "4.50", "notes": "Ask about our flavors" },
+            { "name": "Large", "price": "5.50" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "title": "Kids Menu",
+      "subtitle": "For our youngest guests",
+      "groups": [
+        {
+          "name": "Sandwiches",
+          "description": "Add cheese for $1.50 — American, Cheddar, Provolone, Swiss. Gluten-free bread or bun 3.00.",
+          "items": [
+            { "name": "Hot Dog", "price": "4.25", "notes": "Freshly grilled Dietz & Watson hot dog served on a soft bun" },
+            { "name": "Hamburger", "price": "9.75", "tags": ["GF"], "notes": "7oz Black Angus all-beef hamburger served on a soft bun" },
+            { "name": "Pork Roll", "price": "7.00", "tags": ["GF"], "notes": "Case's pork roll on a soft bun" },
+            { "name": "Grilled Cheese (Plain)", "price": "6.50", "tags": ["GF"], "notes": "Sliced cheese served on grilled white, wheat, or rye bread. Choice of American, Provolone, Cheddar, or Swiss. Plain or add tomato slice." },
+            { "name": "Grilled Cheese w/ Bacon", "price": "8.50" }
+          ]
+        },
+        {
+          "name": "Platters",
+          "description": "Platters come with french fries and a choice of either coleslaw or applesauce.",
+          "items": [
+            { "name": "Chicken Tenders", "price": "13.25", "notes": "Three golden-fried, breaded chicken tenders" },
+            { "name": "Fried Flounder", "price": "14.50", "notes": "Fresh-caught flounder, golden-fried with our homemade breading" },
+            { "name": "Fried Shrimp", "price": "15.50", "notes": "Four fresh-caught, golden-fried shrimp" },
+            { "name": "Fried Scallops", "price": "Market Price", "notes": "Fresh sea scallops, golden-fried" },
+            { "name": "Linguine", "price": "9.00", "notes": "Served with melted butter or homemade tomato marinara sauce" }
+          ]
+        },
+        {
+          "name": "Sides",
+          "items": [
+            { "name": "French Fries", "price": "5.25", "notes": "Generous basket of golden french fries. Topped with hot cheese 8.25" },
+            { "name": "Onion Rings", "price": "9.75", "notes": "Basket of beer-battered fried onion rings" },
+            { "name": "Mozzarella Sticks", "price": "9.75", "notes": "Six golden-fried mozzarella sticks" }
+          ]
+        },
+        {
+          "name": "Drinks & Treats",
+          "items": [
+            { "name": "Smoothies (16 oz)", "price": "9.00", "notes": "Strawberry, Banana, Mango, Pina Colada — choose your flavor" },
+            { "name": "Soft Drinks", "price": "4.00", "notes": "Pepsi, Diet Pepsi, Cherry Pepsi, Starry Lemon-Lime, Birch Beer, Tropicana Lemonade, Mountain Dew, Ginger Ale, Unsweetened Iced Tea" },
+            { "name": "Apple Juice", "price": "4.25" },
+            { "name": "Orange Juice", "price": "4.25" },
+            { "name": "Pink Grapefruit Juice", "price": "4.25" },
+            { "name": "Cranberry Juice", "price": "4.25" },
+            { "name": "Tomato Juice", "price": "4.25" },
+            { "name": "Milk", "price": "4.25" },
+            { "name": "Almond Milk", "price": "4.25" },
+            { "name": "Chocolate Milk", "price": "5.00" },
+            { "name": "Water Ice", "price": "4.50", "notes": "Large 5.50. Ask about our flavors." }
+          ]
+        }
+      ],
+      "footnote": "Can be made gluten-friendly. NOT safe for celiac due to cross-contamination risk."
+    },
+    {
+      "id": "donuts",
+      "title": "Apple Cider Donuts",
+      "subtitle": "Made fresh daily at Oves",
+      "featured": true,
+      "groups": [
+        {
+          "name": "Homemade Apple Cider Donuts",
+          "description": "Made fresh daily — order by the dozen to go!",
+          "items": [
+            { "name": "Plain", "price": "1.75" },
+            { "name": "Cinnamon Sugar", "price": "1.75" },
+            { "name": "Powdered Sugar", "price": "1.75" },
+            { "name": "Honey Glaze", "price": "1.75" },
+            { "name": "Vanilla Icing", "price": "1.75" },
+            { "name": "Chocolate Icing", "price": "1.75" }
+          ]
+        }
+      ]
+    }
+  ],
+  "disclaimers": {
+    "gratuity": "Gratuity of 18% will be charged to parties of 8 or more for table service.",
+    "pricing": "Menu prices subject to change based on product availability.",
+    "cashSurcharge": "A 3% surcharge will be added to all NON-cash transactions. ATM on premises.",
+    "rawFood": "Consuming raw or undercooked meats, poultry, seafood, shellfish or eggs may increase your risk of foodborne illness.",
+    "glutenFriendly": "G/F = Can be made Gluten Friendly. NOT safe for celiac disease — cross-contamination risk.",
+    "veganFriendly": "V/F = Vegan Friendly. Cross-contamination risk.",
+    "chicken": "Our chicken breasts are all-natural. No antibiotics or growth hormones ever.",
+    "seafood": "Our seafood is delivered fresh seven days a week."
+  }
+}
