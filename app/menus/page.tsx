@@ -7,9 +7,9 @@ import menuData from "@/data/menu.json";
 const menu = menuData as Menu;
 
 export const metadata: Metadata = {
-  title: "Our Menus | Oves Restaurant",
+  title: "Our Menus | Tide & Table",
   description:
-    "Breakfast, lunch, dinner, kids menu, and fresh apple cider donuts at Oves Restaurant on the Ocean City boardwalk.",
+    "Breakfast, lunch, dinner, kids menu, and fresh-baked treats at Tide & Table — a fictional boardwalk restaurant concept.",
 };
 
 export default function MenusPage() {

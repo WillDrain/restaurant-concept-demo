@@ -20,14 +20,14 @@ export function PhotoPlaceholder({
 }: PhotoPlaceholderProps) {
   return (
     <div
-      className={`flex ${aspectClasses[aspect]} flex-col items-center justify-center rounded-md border border-dashed border-oves-teal/30 bg-oves-sand/50 p-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_2px_8px_rgba(14,44,78,0.06)] ${className}`}
+      className={`flex ${aspectClasses[aspect]} flex-col items-center justify-center rounded-md border border-dashed border-brand-teal/30 bg-brand-sand/50 p-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_2px_8px_rgba(14,44,78,0.06)] ${className}`}
     >
-      <span className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-oves-teal/80">
+      <span className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-teal/80">
         Photo coming soon
       </span>
-      <p className="mt-2 font-display text-base text-oves-navy">{label}</p>
+      <p className="mt-2 font-display text-base text-brand-navy">{label}</p>
       {caption && (
-        <p className="mt-1 max-w-[16rem] text-xs leading-relaxed text-oves-navy/55">
+        <p className="mt-1 max-w-[16rem] text-xs leading-relaxed text-brand-navy/55">
           {caption}
         </p>
       )}

@@ -5,7 +5,7 @@ from pathlib import Path
 
 from PIL import Image
 
-IMAGE_PATH = Path(__file__).resolve().parents[1] / "public" / "images" / "john-chat.png"
+IMAGE_PATH = Path(__file__).resolve().parents[1] / "public" / "images" / "host-chat.png"
 
 
 def is_background(r: int, g: int, b: int, a: int, threshold: int = 32) -> bool:

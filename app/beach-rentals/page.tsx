@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContentPage } from "@/components/content-page";
 
 export const metadata: Metadata = {
-  title: "Beach Rentals | Oves Restaurant",
+  title: "Beach Rentals | Tide & Table",
 };
 
 const rentals = [
@@ -15,13 +15,13 @@ export default function BeachRentalsPage() {
   return (
     <ContentPage
       title="Beach Rentals"
-      intro="Oves Surrey rentals are a boardwalk favorite for families exploring Ocean City together."
+      intro="Tide & Table surrey rentals are a boardwalk favorite for families exploring the shore together."
     >
       <ul className="mt-8 space-y-3">
         {rentals.map((item) => (
           <li
             key={item}
-            className="rounded-lg border border-oves-teal/20 bg-oves-cream px-4 py-3 text-oves-navy/80"
+            className="rounded-lg border border-brand-teal/20 bg-brand-cream px-4 py-3 text-brand-navy/80"
           >
             {item}
           </li>

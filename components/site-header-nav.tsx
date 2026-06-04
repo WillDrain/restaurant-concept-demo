@@ -27,8 +27,8 @@ function NavLink({
       onClick={onNavigate}
       className={`inline-flex items-center gap-1.5 border-b-2 border-transparent pb-0.5 font-display text-sm transition-colors sm:text-[15px] ${
         isActive
-          ? "border-oves-sun text-oves-navy"
-          : "text-oves-navy/80 hover:border-oves-sun/70 hover:text-oves-sun"
+          ? "border-brand-sun text-brand-navy"
+          : "text-brand-navy/80 hover:border-brand-sun/70 hover:text-brand-sun"
       } ${className}`}
     >
       {item.icon && <NavLineIcon name={item.icon} />}
@@ -55,12 +55,12 @@ export function SiteHeaderNav() {
   return (
     <nav
       aria-label="Main navigation"
-      className="border-b border-oves-sun/25 bg-oves-cream shadow-[0_5px_16px_rgba(14,44,78,0.12)]"
+      className="border-b border-brand-sun/25 bg-brand-cream shadow-[0_5px_16px_rgba(14,44,78,0.12)]"
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-3 py-2 sm:px-4 md:justify-center">
         <button
           type="button"
-          className="inline-flex items-center gap-1.5 rounded-sm border border-oves-navy/10 px-2 py-1 font-display text-sm text-oves-navy transition-colors hover:border-oves-sun hover:text-oves-sun md:hidden"
+          className="inline-flex items-center gap-1.5 rounded-sm border border-brand-navy/10 px-2 py-1 font-display text-sm text-brand-navy transition-colors hover:border-brand-sun hover:text-brand-sun md:hidden"
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
           onClick={() => setMenuOpen((open) => !open)}
@@ -92,8 +92,8 @@ export function SiteHeaderNav() {
         </ul>
 
         <a
-          href="tel:6093983712"
-          className="inline-flex items-center rounded-sm border border-oves-sun/60 bg-oves-sand px-3 py-1 font-display text-sm font-semibold text-oves-navy transition-colors hover:border-oves-sun hover:bg-oves-sun/20 hover:text-oves-navy md:hidden"
+          href="tel:5552480199"
+          className="inline-flex items-center rounded-sm border border-brand-sun/60 bg-brand-sand px-3 py-1 font-display text-sm font-semibold text-brand-navy transition-colors hover:border-brand-sun hover:bg-brand-sun/20 hover:text-brand-navy md:hidden"
         >
           Call
         </a>
@@ -102,7 +102,7 @@ export function SiteHeaderNav() {
       {menuOpen && (
         <div
           id="mobile-nav"
-          className="border-t border-oves-sun/20 px-3 py-2 md:hidden"
+          className="border-t border-brand-sun/20 px-3 py-2 md:hidden"
         >
           <ul className="mx-auto flex max-w-5xl flex-col gap-0.5">
             {navItems.map((item) => (

@@ -1,7 +1,7 @@
 {
-  "$schema_note": "Oves Restaurant menu data. Single source of truth — used by /menus page and by the chatbot system prompt. Update prices here only.",
+  "$schema_note": "Tide & Table menu data. Single source of truth — used by /menus page and by the chatbot system prompt. Update prices here only.",
   "lastUpdated": "2026-05-28",
-  "established": 1968,
+  "established": 1985,
   "tags": {
     "GF": {
       "label": "Gluten Friendly",
@@ -51,7 +51,7 @@
           ]
         },
         {
-          "name": "Oves Specialty Omelettes",
+          "name": "Tide & Table Specialty Omelettes",
           "items": [
             { "name": "Island", "price": "17.00", "notes": "Crab meat, cheese, mango salsa, sriracha mayo & Old Bay" },
             { "name": "Heart Healthy", "price": "14.50", "notes": "Egg whites, turkey sausage, spinach, swiss cheese & mushrooms" },
@@ -152,7 +152,7 @@
           "items": [
             { "name": "Turkey Sub", "price": "12.75", "notes": "Fresh turkey breast, American cheese, lettuce, tomato, onion and mayo. Served on a sub roll or a 12-inch flour tortilla wrap." },
             { "name": "Italian Sub", "price": "12.75", "notes": "Capicola, genoa, cooked salami, provolone cheese, lettuce, tomato and onion. Topped with oregano, oil & vinegar. Served on a sub roll or a 12-inch flour wrap." },
-            { "name": "BLT", "price": "8.50", "tags": ["GF"], "notes": "Bacon, lettuce & Jersey-fresh tomato served with mayo on white, wheat or rye bread" }
+            { "name": "BLT", "price": "8.50", "tags": ["GF"], "notes": "Bacon, lettuce & vine-ripened tomato served with mayo on white, wheat or rye bread" }
           ]
         },
         {
@@ -161,7 +161,7 @@
             { "name": "Chicken Tenders", "price": "9.99", "notes": "Four golden-fried, breaded chicken tenders" },
             { "name": "Krispy Chicken Sandwich", "price": "10.75", "notes": "Breaded, golden-fried chicken breast patty served on a kaiser roll" },
             { "name": "Fried Flounder Sandwich", "price": "15.99", "notes": "Fresh-caught flounder golden-fried with our homemade breading served on a fresh bakery roll" },
-            { "name": "\"Island's Best\" Chesapeake Bay Crab Cake Sandwich", "price": "16.99", "notes": "An Oves favorite! Made from jumbo lump crabmeat with just a touch of seasoning, served on a soft bun" }
+            { "name": "\"Island's Best\" Chesapeake Bay Crab Cake Sandwich", "price": "16.99", "notes": "A house favorite! Made from jumbo lump crabmeat with just a touch of seasoning, served on a soft bun" }
           ],
           "footnote": "Our chicken breasts are all-natural. No antibiotics or growth hormones ever."
         }
@@ -171,7 +171,7 @@
       "id": "dinner",
       "title": "Dinner",
       "subtitle": "Serving starts at 5pm · Ask your server about our daily specials!",
-      "description": "Entrées served with two side dishes. Pasta entrées served with one side dish. Sides: house salad, baked potato, cole slaw, applesauce, french fries, fresh jersey corn on the cob (when available) or fresh vegetable of the day. Extra side french fries 5.25 / extra side applesauce, coleslaw or vegetable 2.",
+      "description": "Entrées served with two side dishes. Pasta entrées served with one side dish. Sides: house salad, baked potato, cole slaw, applesauce, french fries, fresh local corn on the cob (when available) or fresh vegetable of the day. Extra side french fries 5.25 / extra side applesauce, coleslaw or vegetable 2.",
       "groups": [
         {
           "name": "Appetizers",
@@ -194,7 +194,7 @@
         {
           "name": "Homemade Soups",
           "items": [
-            { "name": "Manhattan Clam Chowder", "price": "7.99", "tags": ["GF"], "notes": "Tomato-based chowder, chopped green peppers, carrots, onions, celery, fresh clams and Oves' own mix of herbs & spices" },
+            { "name": "Manhattan Clam Chowder", "price": "7.99", "tags": ["GF"], "notes": "Tomato-based chowder, chopped green peppers, carrots, onions, celery, fresh clams and our own mix of herbs & spices" },
             { "name": "Soup Du Jour", "price": "7.99", "notes": "Ask your server about our delicious homemade selections" }
           ]
         },
@@ -218,7 +218,7 @@
           "name": "Sandwiches",
           "description": "Gluten-free bun 3.00 extra. All sandwiches served with french fries.",
           "items": [
-            { "name": "The Oves Burger", "price": "16.99", "tags": ["GF"], "notes": "7oz Black Angus beef burger with american cheese, topped with lettuce, onion & tomato" },
+            { "name": "The Tide & Table Burger", "price": "16.99", "tags": ["GF"], "notes": "7oz Black Angus beef burger with american cheese, topped with lettuce, onion & tomato" },
             { "name": "Philly Cheesesteak", "price": "18.50", "notes": "8oz shaved ribeye, american cheese & fried onions" },
             { "name": "Chicken Sandwich", "price": "18.50", "tags": ["GF"], "notes": "Grilled chicken breast topped with cheese, lettuce, tomato & onion" },
             { "name": "Chicken Cheesesteak", "price": "18.50", "notes": "8oz grilled chicken breast, american cheese & fried onions" },
@@ -241,8 +241,8 @@
           "description": "Our seafood is delivered fresh seven days a week.",
           "items": [
             { "name": "Flounder", "price": "25.99", "tags": ["GF"], "notes": "Fresh-caught flounder broiled in a seasoned white wine sauce or golden fried with our homemade breading" },
-            { "name": "Stuffed Flounder", "price": "31.99", "notes": "Flounder filled with Oves' homemade crabmeat stuffing" },
-            { "name": "Stuffed Shrimp", "price": "30.99", "notes": "Five jumbo shrimp stuffed with Oves' homemade crabmeat stuffing" },
+            { "name": "Stuffed Flounder", "price": "31.99", "notes": "Flounder filled with our homemade crabmeat stuffing" },
+            { "name": "Stuffed Shrimp", "price": "30.99", "notes": "Five jumbo shrimp stuffed with our homemade crabmeat stuffing" },
             { "name": "Fried Shrimp", "price": "24.99", "notes": "A generous serving of six golden fried jumbo shrimp" },
             { "name": "Coconut Shrimp", "price": "28.99", "notes": "Six jumbo shrimp battered with coconut served with a side of raspberry melba sauce" },
             { "name": "Crab Imperial", "price": "29.99", "tags": ["GF"], "notes": "Baked jumbo crabmeat with homemade imperial sauce" },
@@ -338,12 +338,12 @@
     },
     {
       "id": "donuts",
-      "title": "Apple Cider Donuts",
-      "subtitle": "Made fresh daily at Oves",
+      "title": "Fresh-Baked Treats",
+      "subtitle": "Made fresh daily at Tide & Table",
       "featured": true,
       "groups": [
         {
-          "name": "Homemade Apple Cider Donuts",
+          "name": "House-Made Treats",
           "description": "Made fresh daily — order by the dozen to go!",
           "items": [
             { "name": "Plain", "price": "1.75" },

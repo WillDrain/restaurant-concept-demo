@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 type Message = {
@@ -10,7 +9,7 @@ type Message = {
 };
 
 const OPENING_MESSAGE =
-  "Hi! I'm here to help with anything about Oves — hours, menu, donuts, rentals, parties. What can I get you?";
+  "Hi! I'm here to help with anything about Tide & Table — hours, menu, seafood, rentals, parties. What can I get you?";
 
 // TODO: replace getCannedReply() with a fetch to /api/chat once the Anthropic API is wired up.
 function getCannedReply(input: string): string {
@@ -21,7 +20,7 @@ function getCannedReply(input: string): string {
   }
 
   if (message.includes("donut")) {
-    return "Our apple cider donuts are made fresh daily at Oves — a boardwalk favorite! Come grab one (or a dozen) when you visit.";
+    return "Our fresh-baked treats are made daily at Tide & Table — a boardwalk favorite! Come grab one (or a dozen) when you visit.";
   }
 
   if (message.includes("menu")) {
@@ -34,7 +33,7 @@ function getCannedReply(input: string): string {
     message.includes("bike") ||
     message.includes("beach")
   ) {
-    return "We offer bike rentals and beach surrey rentals right on the boardwalk — perfect for a family ride along Ocean City. Ask us at the restaurant for availability!";
+    return "We offer bike rentals and beach surrey rentals right on the boardwalk — perfect for a family ride along the shore. Ask us at the restaurant for availability!";
   }
 
   if (
@@ -42,36 +41,34 @@ function getCannedReply(input: string): string {
     message.includes("call") ||
     message.includes("reservation")
   ) {
-    return "Give us a call at (609) 398-3712 — we'd love to help with reservations, private parties, or any questions!";
+    return "Give us a call at (555) 248-0199 — we'd love to help with reservations, private parties, or any questions!";
   }
 
-  return "Great question! For that one, give us a call at (609) 398-3712 and we'll help you out.";
+  return "Great question! For that one, give us a call at (555) 248-0199 and we'll help you out.";
 }
 
-function JohnAvatar({
+function HostAvatar({
   size = "button",
-  alt = "John from Oves Restaurant",
+  alt = "Tide & Table host",
 }: {
   size?: "button" | "header";
   alt?: string;
 }) {
   const dimensions =
     size === "button"
-      ? "h-16 w-16 border-2 border-oves-sun/60 shadow-md"
-      : "h-10 w-10 border border-oves-sun/40";
+      ? "h-16 w-16 border-2 border-brand-sun/60 text-lg shadow-md"
+      : "h-10 w-10 border border-brand-sun/40 text-[10px]";
 
   return (
     <div
-      className={`shrink-0 overflow-hidden rounded-full bg-oves-teal/20 ${dimensions}`}
+      role="img"
+      aria-label={alt || undefined}
+      aria-hidden={alt ? undefined : true}
+      className={`flex shrink-0 select-none items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-navy font-display font-semibold leading-none tracking-tight text-brand-cream ${dimensions}`}
     >
-      <Image
-        src="/images/john-chat.png"
-        alt={alt}
-        width={64}
-        height={64}
-        unoptimized
-        className="h-full w-full object-cover object-[center_20%]"
-      />
+      <span aria-hidden>
+        T<span className="text-brand-sun">&amp;</span>T
+      </span>
     </div>
   );
 }
@@ -133,48 +130,48 @@ export function ChatWidget() {
     <>
       {!open && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-          <div className="rounded-full border border-oves-sun/40 bg-oves-cream px-4 py-2 font-display text-sm font-semibold text-oves-navy shadow-md sm:text-base">
-            Ask Oves
+          <div className="rounded-full border border-brand-sun/40 bg-brand-cream px-4 py-2 font-display text-sm font-semibold text-brand-navy shadow-md sm:text-base">
+            Ask Tide &amp; Table
           </div>
           <button
             type="button"
             onClick={() => setOpen(true)}
             aria-expanded={false}
-            aria-controls="oves-chat-panel"
-            aria-label="Open chat with Oves"
-            className="rounded-full transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-oves-sun focus-visible:ring-offset-2"
+            aria-controls="brand-chat-panel"
+            aria-label="Open chat with Tide & Table"
+            className="rounded-full transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-sun focus-visible:ring-offset-2"
           >
-            <JohnAvatar />
+            <HostAvatar />
           </button>
         </div>
       )}
 
       <div
-        id="oves-chat-panel"
+        id="brand-chat-panel"
         role="dialog"
-        aria-label="Oves Restaurant chat"
+        aria-label="Tide & Table chat"
         aria-hidden={!open}
-        className={`fixed z-50 flex max-h-[70vh] flex-col overflow-hidden border border-oves-sun/25 bg-oves-cream shadow-[0_12px_40px_rgba(14,44,78,0.22)] transition-all duration-300 ease-out ${
+        className={`fixed z-50 flex max-h-[70vh] flex-col overflow-hidden border border-brand-sun/25 bg-brand-cream shadow-[0_12px_40px_rgba(14,44,78,0.22)] transition-all duration-300 ease-out ${
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-4 opacity-0 max-sm:translate-y-full"
         } inset-x-0 bottom-0 rounded-t-2xl sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[380px] sm:max-w-[calc(100vw-3rem)] sm:rounded-2xl`}
       >
-        <header className="flex shrink-0 items-center justify-between gap-3 bg-oves-navy px-4 py-3 text-oves-cream">
+        <header className="flex shrink-0 items-center justify-between gap-3 bg-brand-navy px-4 py-3 text-brand-cream">
           <div className="flex min-w-0 items-center gap-3">
-            <JohnAvatar size="header" alt="" />
+            <HostAvatar size="header" alt="" />
             <div className="min-w-0">
               <p className="font-display text-base font-semibold leading-tight">
-                Oves Restaurant
+                Tide &amp; Table
               </p>
-              <p className="text-xs text-oves-sand">Ask us anything!</p>
+              <p className="text-xs text-brand-sand">Ask us anything!</p>
             </div>
           </div>
           <button
             type="button"
             onClick={() => setOpen(false)}
             aria-label="Close chat"
-            className="shrink-0 rounded-sm p-1 text-oves-sand transition-colors hover:text-oves-sun"
+            className="shrink-0 rounded-sm p-1 text-brand-sand transition-colors hover:text-brand-sun"
           >
             <svg
               viewBox="0 0 24 24"
@@ -189,7 +186,7 @@ export function ChatWidget() {
           </button>
         </header>
 
-        <div className="flex min-h-0 flex-1 flex-col bg-oves-cream">
+        <div className="flex min-h-0 flex-1 flex-col bg-brand-cream">
           <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
             {messages.map((message) => (
               <div
@@ -199,8 +196,8 @@ export function ChatWidget() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                     message.role === "user"
-                      ? "bg-oves-teal text-oves-cream"
-                      : "bg-oves-sand text-oves-navy"
+                      ? "bg-brand-teal text-brand-cream"
+                      : "bg-brand-sand text-brand-navy"
                   }`}
                 >
                   {message.text}
@@ -210,7 +207,7 @@ export function ChatWidget() {
 
             {typing && (
               <div className="flex justify-start">
-                <div className="rounded-2xl bg-oves-sand px-3.5 py-2.5 text-sm text-oves-navy/70">
+                <div className="rounded-2xl bg-brand-sand px-3.5 py-2.5 text-sm text-brand-navy/70">
                   <span className="inline-flex gap-1">
                     <span className="animate-pulse">•</span>
                     <span className="animate-pulse [animation-delay:150ms]">•</span>
@@ -223,7 +220,7 @@ export function ChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="shrink-0 border-t border-oves-teal/15 bg-oves-cream p-3">
+          <div className="shrink-0 border-t border-brand-teal/15 bg-brand-cream p-3">
             <div className="flex gap-2">
               <input
                 ref={inputRef}
@@ -231,15 +228,15 @@ export function ChatWidget() {
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask about hours, menu, donuts..."
+                placeholder="Ask about hours, menu, specials..."
                 disabled={typing}
-                className="min-w-0 flex-1 rounded-md border border-oves-teal/25 bg-white px-3 py-2 text-sm text-oves-navy placeholder:text-oves-navy/40 focus:border-oves-sun focus:outline-none focus:ring-1 focus:ring-oves-sun/50 disabled:opacity-60"
+                className="min-w-0 flex-1 rounded-md border border-brand-teal/25 bg-white px-3 py-2 text-sm text-brand-navy placeholder:text-brand-navy/40 focus:border-brand-sun focus:outline-none focus:ring-1 focus:ring-brand-sun/50 disabled:opacity-60"
               />
               <button
                 type="button"
                 onClick={sendMessage}
                 disabled={!input.trim() || typing}
-                className="shrink-0 rounded-md border border-oves-sun/50 bg-oves-teal px-4 py-2 font-display text-sm font-semibold text-oves-cream transition-colors hover:border-oves-sun hover:bg-oves-navy disabled:cursor-not-allowed disabled:opacity-50"
+                className="shrink-0 rounded-md border border-brand-sun/50 bg-brand-teal px-4 py-2 font-display text-sm font-semibold text-brand-cream transition-colors hover:border-brand-sun hover:bg-brand-navy disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Send
               </button>

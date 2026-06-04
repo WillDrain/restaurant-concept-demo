@@ -4,7 +4,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        oves: {
+        brand: {
           navy: "#0E2C4E",
           teal: "#1F8A7A",
           sand: "#F5E6C8",

@@ -13,12 +13,12 @@ export default function Home() {
       <HomeMealHours />
       <HomeHighlights />
 
-      <section className="border-t border-oves-teal/10 bg-oves-sand/40 py-10 sm:py-12">
-        <div className="oves-container text-center">
-          <h2 className="font-display text-2xl font-semibold text-oves-navy sm:text-3xl">
-            Ready to visit Oves?
+      <section className="border-t border-brand-teal/10 bg-brand-sand/40 py-10 sm:py-12">
+        <div className="brand-container text-center">
+          <h2 className="font-display text-2xl font-semibold text-brand-navy sm:text-3xl">
+            Ready to visit Tide &amp; Table?
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-oves-navy/70 sm:text-base">
+          <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-brand-navy/70 sm:text-base">
             Browse the menu, find us on the boardwalk, or call ahead for
             reservations and private party details.
           </p>
@@ -27,7 +27,7 @@ export default function Home() {
             <CtaButton href="/directions" variant="secondary">
               Get Directions
             </CtaButton>
-            <CtaButton href="tel:+16093983712" variant="gold">
+            <CtaButton href="tel:+15552480199" variant="gold">
               Call Now
             </CtaButton>
           </div>

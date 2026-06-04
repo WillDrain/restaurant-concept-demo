@@ -9,10 +9,10 @@ type CtaButtonProps = {
 
 const variants = {
   primary:
-    "border-oves-teal bg-oves-teal text-oves-cream hover:border-oves-sun hover:bg-oves-navy",
+    "border-brand-teal bg-brand-teal text-brand-cream hover:border-brand-sun hover:bg-brand-navy",
   secondary:
-    "border-oves-sun/40 bg-oves-cream text-oves-navy hover:border-oves-sun hover:bg-oves-sand",
-  gold: "border-oves-sun bg-oves-sand text-oves-navy hover:border-oves-ember hover:bg-oves-sun/25",
+    "border-brand-sun/40 bg-brand-cream text-brand-navy hover:border-brand-sun hover:bg-brand-sand",
+  gold: "border-brand-sun bg-brand-sand text-brand-navy hover:border-brand-ember hover:bg-brand-sun/25",
 };
 
 export function CtaButton({

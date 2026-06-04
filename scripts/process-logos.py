@@ -5,8 +5,11 @@ from pathlib import Path
 
 from PIL import Image
 
+# NOTE: Obsolete. Tide & Table uses a text wordmark instead of a logo image,
+# so this brand-asset processor is no longer wired into the site. Kept only as
+# a reference utility; safe to delete.
 ASSETS = Path(
-    r"C:\Users\drain\.cursor\projects\c-Users-drain-OneDrive-Desktop-oves-restaurant\assets"
+    r"C:\Users\drain\.cursor\projects\c-Users-drain-OneDrive-Desktop-tide-and-table\assets"
 )
 OUTPUT = Path(__file__).resolve().parents[1] / "public" / "images"
 
@@ -222,13 +225,13 @@ def process_home_tab_logo(source: Path, destination: Path) -> None:
 def main() -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
 
-    files = {path.name.split("_images_")[1].split("-")[0]: path for path in ASSETS.glob("*Oves*.png")}
+    files = {path.name.split("_images_")[1].split("-")[0]: path for path in ASSETS.glob("*Logo*.png")}
 
-    process_donut(files["OvesDonutLogo"], OUTPUT / "oves-donut-logo.png")
-    process_main_logo(files["OvesMainHeaderLogo"], OUTPUT / "oves-main-logo.png")
-    process_home_tab_logo(files["OvesHompageLogo"], OUTPUT / "oves-home-tab-logo.png")
+    process_donut(files["DonutLogo"], OUTPUT / "brand-donut-logo.png")
+    process_main_logo(files["MainHeaderLogo"], OUTPUT / "brand-main-logo.png")
+    process_home_tab_logo(files["HomepageLogo"], OUTPUT / "brand-home-tab-logo.png")
 
-    for path in OUTPUT.glob("oves-*.png"):
+    for path in OUTPUT.glob("brand-*.png"):
         with Image.open(path) as image:
             print(f"{path.name}: {image.size}")
 

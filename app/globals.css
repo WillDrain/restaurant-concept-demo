@@ -7,29 +7,29 @@
 }
 
 body {
-  @apply bg-oves-navy text-oves-cream;
+  @apply bg-brand-navy text-brand-cream;
 }
 
 a {
   transition: color 150ms ease;
 }
 
-.oves-container {
+.brand-container {
   @apply mx-auto max-w-5xl px-4 sm:px-6;
 }
 
-.oves-section {
+.brand-section {
   @apply py-10 sm:py-12 lg:py-14;
 }
 
-.oves-card {
-  @apply rounded-md border border-oves-teal/15 bg-oves-cream shadow-[0_2px_12px_rgba(14,44,78,0.06)];
+.brand-card {
+  @apply rounded-md border border-brand-teal/15 bg-brand-cream shadow-[0_2px_12px_rgba(14,44,78,0.06)];
 }
 
-.oves-badge {
-  @apply inline-block rounded-sm border border-oves-teal/20 bg-oves-sand px-3 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.16em] text-oves-teal;
+.brand-badge {
+  @apply inline-block rounded-sm border border-brand-teal/20 bg-brand-sand px-3 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-teal;
 }
 
-.oves-divider {
-  @apply h-px w-16 bg-gradient-to-r from-oves-sun/80 via-oves-teal/40 to-transparent;
+.brand-divider {
+  @apply h-px w-16 bg-gradient-to-r from-brand-sun/80 via-brand-teal/40 to-transparent;
 }

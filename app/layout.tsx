@@ -15,9 +15,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Oves Restaurant | Ocean City Boardwalk",
+  title: "Tide & Table | Boardwalk Concept Demo",
   description:
-    "Family-owned boardwalk restaurant in Ocean City, NJ. Fresh apple cider donuts, breakfast by the beach, and over 55 years of tradition.",
+    "Tide & Table is a fictional seaside boardwalk restaurant concept. Fresh seafood, breakfast by the beach, fresh-baked treats, and a warm, family-owned feel — a portfolio demo.",
 };
 
 export default function RootLayout({
