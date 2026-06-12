@@ -58,3 +58,24 @@ Rule of thumb: keep pages static by default (faster). Only reach for force-dynam
 - `force-dynamic` = page re-renders on every request. Needed when data changes between requests (e.g., /reservations reading live bookings).
 - Rule: match rendering strategy to how often the data changes. Homepage = static. Live bookings = dynamic.
 - My miss: thought the snapshot happened "on load" — it happens at build time, before any visitor exists.
+
+## Middleware & Server-Side Auth (Next.js)
+- Order: middleware → (if allowed) Server Component render → DB query. Middleware runs BEFORE any page code.
+- Failed auth = 401 at the edge. The component never renders, the query never runs, data never leaves the DB.
+- Disabling JS does nothing: middleware + Server Components + Prisma all run on the server. Browser only receives the result (401 or HTML).
+- Real security is enforced server-side. Client-side checks (hiding UI in React) ship the data anyway — view source defeats them.
+- My miss: had the order backwards (thought the component rendered first). The whole point of middleware is that it runs first.
+
+## Destructive DB ops vs. config files (Prisma seed / deleteMany)
+
+- `.env` holds **configuration** (DATABASE_URL, secrets) as key=value. It does NOT
+  hold table data. Conflating "where config lives" with "where data lives" is how
+  people wipe data thinking a copy exists. There is no automatic copy.
+- Table rows live only in the database (Neon Postgres), reachable via the connection
+  string. `prisma.x.deleteMany({})` = SQL `DELETE FROM "table"`. No file backup happens.
+- Once a DELETE commits, rows are gone. "Manually re-add" is only possible if you
+  captured them BEFORE deleting.
+- RULE: destructive op against data you can't reconstruct → LOOK at it first
+  (e.g. `npx prisma studio`), then decide to keep/discard as a deliberate call.
+- Seeds are run via Prisma's built-in runner by adding a top-level `"prisma": { "seed": "..." }`
+  key to package.json, then `npx prisma db seed` (it auto-loads .env).
