@@ -1,81 +1,84 @@
-## API Route
+# LEARNING.md
 
-The browser can't reach the database directly because it doesn't have and can never be given the credentials. Those live on the server with the API route. The browser can only ask the route, and the route checks the request, then talks to the database itself.
+Notes on what I learned building Tide & Table, written in my own words. This is part of my Explain-to-Ship rule: if I can't explain it here, I don't ship it.
 
-## fetch failure detection + status codes
+## How the browser talks to the database
 
-Validation is a 400(bad request). 404 means the route/url doesn't exist. 400 means the route ran fine but the data sent was rejected.
+The browser can't reach the database directly. It doesn't have the credentials, and it never should. Those live on the server with the API route. So the browser asks the route, the route checks the request, and the route talks to the database itself.
 
-fetch only rejects on a network failure
-400 is a successful HTTP round-trip.
-try/catch will not catch a 400
+## Catching a failed fetch (status codes)
 
-For rejected request detection. I check response.ok
-If !response.ok, read the error body and show it.... other wise success 
+The status codes I actually deal with:
 
-## Pooled vs direct DB connections (DATABASE_URL vs DIRECT_URL)
+- `400` means the route ran fine but rejected the data I sent. That's a validation failure (bad request).
+- `404` means the route or URL doesn't exist.
 
-Postgres has a max number of connections it can hold open. Serverless breaks this: my API route on Vercel isn't one server — every request can spawn its own function instance, and under load there could be tons running at once. If each one opens its own direct DB connection, I blow past Neon's connection limit and the DB starts refusing connections.
+The catch: `fetch` only rejects on a network failure. A `400` is still a successful HTTP round-trip, so a `try/catch` won't catch it. The request technically worked, the server just said no.
 
-Fix = a connection POOLER (Neon provides one, PgBouncer). It holds a few real connections and lets all the function instances share them.
+That's why I check `response.ok` instead of leaning on `try/catch`. If `!response.ok`, I read the error body and show it. Otherwise I treat it as a success.
 
-- DATABASE_URL = the POOLED string (has -pooler in the hostname). This is what the app uses for normal queries at runtime. Everyday traffic road.
-- DIRECT_URL = the UNPOOLED straight-to-DB string. Prisma needs this for MIGRATIONS / schema changes, because those need one stable session the pooler can't guarantee. Maintenance road.
+## Pooled vs direct database connections (DATABASE_URL vs DIRECT_URL)
 
-Same database, two roads, different jobs. Production was broken without these because the live route had no road to the DB at all.
+Postgres can only hold so many connections open at once. Serverless breaks that limit. My API route on Vercel isn't one server, it's a function that can spawn a separate instance for every request, and under load there could be a ton of them running at the same time. If each one opens its own direct connection to the database, I blow past Neon's limit and the database starts refusing connections.
 
-## Server vs Client Components — the DB access line (read path vs write path)
+The fix is a connection pooler. Neon provides one (PgBouncer). It holds a few real connections open and lets all the function instances share them.
 
-"Server" and "client" are NOT people (not the customer vs the business). They're WHERE THE CODE RUNS.
-- Server Component = runs on the server before anything hits the browser. CAN touch the DB directly (credentials live there). Ships finished HTML.
-- Client Component ("use client") = runs in the visitor's browser. CANNOT touch the DB. Has to go through an API route.
+So I keep two connection strings:
 
-Both still show the page to the same human — the question is only where the data-fetching code runs on the way there.
+- `DATABASE_URL` is the pooled string (it has `-pooler` in the hostname). The app uses this for normal queries at runtime. This is the everyday traffic road.
+- `DIRECT_URL` is the unpooled, straight-to-database string. Prisma needs this for migrations and schema changes, because those need one stable session that a pooler can't guarantee. This is the maintenance road.
 
-WRITE path (BookATableForm): runs in the browser → can't reach DB → MUST go through an API route. That's why the form needed /api/reservations.
+Same database, two roads, different jobs. Production was broken without these because the live route had no road to the database at all.
 
-READ path (/reservations): make it a Server Component → it queries Prisma directly, renders HTML with data already in it, ships it. NO API route needed, because the page is already running on the side that can reach the DB.
+## Server vs Client Components (where the code runs)
 
-Same boundary, opposite directions. Default to Server Component; only reach for client-side fetch when I need live updates or interactivity (e.g. a real-time dashboard).
+"Server" and "client" are not people. They're not the customer vs the business. They describe where the code runs.
 
-## Static vs Dynamic rendering — when does a page's code actually run?
+- A Server Component runs on the server before anything reaches the browser. It can touch the database directly, because the credentials live there. It ships finished HTML.
+- A Client Component (`"use client"`) runs in the visitor's browser. It cannot touch the database. It has to go through an API route.
 
-A Next.js page can run at two totally different moments, and this is invisible in the code:
+Both still show the page to the same person. The only question is where the data-fetching code runs on the way there.
 
-STATIC (the default): the component runs ONCE at BUILD time (when Vercel builds the deploy). It captures the resulting HTML as a frozen file and serves that same snapshot to everyone. Fast + cheap. Right for pages that don't change (menu, about, landing).
+That split is why the two paths in my app behave differently:
 
-DYNAMIC (force-dynamic): the component runs FRESH on EVERY request. Someone visits → server runs my function right then → queries the DB at that moment → builds HTML with current data. Slower (DB hit per visit) but always live.
+- The write path (the booking form) runs in the browser, so it can't reach the database. It has to go through an API route. That's why the form needed `/api/reservations`.
+- The read path (the `/reservations` page) is a Server Component. It queries Prisma directly, renders HTML with the data already in it, and ships that. No API route needed, because the page is already running on the side that can reach the database.
 
-Why /reservations needs force-dynamic:
-If it were left static, Vercel would run it once at build time and freeze whatever bookings existed THEN. A new booking made afterward would be invisible — the page is a snapshot from deploy time. It'd look broken even though the DB is fine and the row saved. The data's there; the page just took its photo too early.
+Same boundary, opposite directions. I default to a Server Component and only reach for a client-side fetch when I need live updates or interactivity, like a real-time dashboard.
 
-export const dynamic = "force-dynamic" = "don't snapshot at build, run this on every request." Forces the DB query to run per-visit.
+## Static vs dynamic rendering (when does the page actually run?)
 
-Rule of thumb: keep pages static by default (faster). Only reach for force-dynamic when the page must reflect data that changes AFTER deploy — like a reservations list. A menu page does NOT need it.
+A Next.js page can run at two completely different moments, and you can't tell which from the code alone.
 
-## Static vs Dynamic Rendering (Next.js)
-- No `force-dynamic` = page is rendered ONCE at build time (`next build`), served as cached HTML from CDN. Content frozen until redeploy.
-- `force-dynamic` = page re-renders on every request. Needed when data changes between requests (e.g., /reservations reading live bookings).
-- Rule: match rendering strategy to how often the data changes. Homepage = static. Live bookings = dynamic.
-- My miss: thought the snapshot happened "on load" — it happens at build time, before any visitor exists.
+- Static is the default. The component runs once, at build time, when Vercel builds the deploy. It captures the resulting HTML as a frozen file and serves that same snapshot to everyone. Fast and cheap. Right for pages that don't change, like the menu, the about page, or the landing page.
+- Dynamic (`force-dynamic`) means the component runs fresh on every request. Someone visits, the server runs my function right then, queries the database at that moment, and builds the HTML with current data. Slower, because it hits the database on every visit, but always live.
 
-## Middleware & Server-Side Auth (Next.js)
-- Order: middleware → (if allowed) Server Component render → DB query. Middleware runs BEFORE any page code.
-- Failed auth = 401 at the edge. The component never renders, the query never runs, data never leaves the DB.
-- Disabling JS does nothing: middleware + Server Components + Prisma all run on the server. Browser only receives the result (401 or HTML).
-- Real security is enforced server-side. Client-side checks (hiding UI in React) ship the data anyway — view source defeats them.
-- My miss: had the order backwards (thought the component rendered first). The whole point of middleware is that it runs first.
+Why `/reservations` needs `force-dynamic`: if I left it static, Vercel would run it once at build time and freeze whatever bookings existed then. Any booking made afterward would be invisible, because the page is just a snapshot from deploy time. It would look broken even though the database is fine and the row saved. The data is there, the page just took its photo too early.
 
-## Destructive DB ops vs. config files (Prisma seed / deleteMany)
+`export const dynamic = "force-dynamic"` means "don't snapshot at build, run this on every request." It forces the database query to run per visit.
 
-- `.env` holds **configuration** (DATABASE_URL, secrets) as key=value. It does NOT
-  hold table data. Conflating "where config lives" with "where data lives" is how
-  people wipe data thinking a copy exists. There is no automatic copy.
-- Table rows live only in the database (Neon Postgres), reachable via the connection
-  string. `prisma.x.deleteMany({})` = SQL `DELETE FROM "table"`. No file backup happens.
-- Once a DELETE commits, rows are gone. "Manually re-add" is only possible if you
-  captured them BEFORE deleting.
-- RULE: destructive op against data you can't reconstruct → LOOK at it first
-  (e.g. `npx prisma studio`), then decide to keep/discard as a deliberate call.
-- Seeds are run via Prisma's built-in runner by adding a top-level `"prisma": { "seed": "..." }`
-  key to package.json, then `npx prisma db seed` (it auto-loads .env).
+Rule of thumb: keep pages static by default because it's faster, and only reach for `force-dynamic` when the page has to reflect data that changes after deploy, like a live bookings list. A menu page doesn't need it.
+
+Where I was wrong: I thought the snapshot happened when the page loads. It actually happens at build time, before any visitor exists.
+
+## Middleware and server-side auth
+
+The order matters. Middleware runs first, then (if the request is allowed) the Server Component renders, then the database query runs. Middleware runs before any page code.
+
+If auth fails, it's a `401` at the edge. The component never renders, the query never runs, and the data never leaves the database.
+
+Turning off JavaScript does nothing here. Middleware, Server Components, and Prisma all run on the server. The browser only ever receives the result, either a `401` or finished HTML.
+
+Real security is enforced on the server. Client-side checks, like hiding UI in React, ship the data anyway. View source defeats them.
+
+Where I was wrong: I had the order backwards and thought the component rendered first. The whole point of middleware is that it runs first.
+
+## Destructive database ops vs config files
+
+`.env` holds configuration, like `DATABASE_URL` and secrets, as key=value pairs. It does not hold table data. Mixing up "where config lives" with "where data lives" is how people wipe data thinking they have a copy somewhere. There is no automatic copy.
+
+Table rows live only in the database (Neon Postgres), reachable through the connection string. `prisma.x.deleteMany({})` is the same as SQL `DELETE FROM "table"`. No file backup happens behind the scenes. Once a `DELETE` commits, the rows are gone. "I'll just manually re-add them" only works if I captured them before deleting.
+
+My rule: before running a destructive op against data I can't reconstruct, I look at it first (`npx prisma studio`), then decide to keep or discard it as a deliberate call.
+
+Seeds run through Prisma's built-in runner. I add a top-level `"prisma": { "seed": "..." }` key to `package.json`, then run `npx prisma db seed`, which auto-loads `.env`.
