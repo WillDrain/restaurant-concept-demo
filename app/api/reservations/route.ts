@@ -3,11 +3,19 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
 const ReservationSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Valid email required"),
-  phone: z.string().min(7, "Phone is required"),
+  name: z.string().min(1, "Name is required").max(100, "Name is too long"),
+  email: z
+    .string()
+    .email("Valid email required")
+    .max(254, "Email is too long"),
+  phone: z
+    .string()
+    .min(7, "Phone is required")
+    .max(20, "Phone is too long"),
   partySize: z.number().int().positive().max(20),
-  date: z.coerce.date(),
+  date: z.coerce.date().refine((d) => d >= new Date(), {
+    message: "Reservation date can't be in the past",
+  }),
   notes: z.string().max(500).optional(),
 });
 
